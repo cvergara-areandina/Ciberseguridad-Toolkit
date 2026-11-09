@@ -1,0 +1,65 @@
+# ==============================================================
+# Repositorio publico: NADA de evidencia, PII ni secretos.
+# ==============================================================
+
+# --- Dependencias ---
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Datos locales / evidencia (nunca al repo) ---
+inbox/
+workspace/
+sandbox/
+logs/
+.memory/
+evidence/
+casos/*/evidence/
+*.eml
+*.msg
+*.pst
+*.ost
+*.mbox
+
+# --- Secretos ---
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.jks
+secrets/
+credentials*
+*token*.json
+
+# --- Binarios y muestras ---
+*.exe
+*.dll
+*.so
+*.bin
+*.zip
+*.7z
+*.rar
+*.iso
+*.apk
+*.jar
+
+# --- Sistema / editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# --- Temporales ---
+*.tmp
+*.log

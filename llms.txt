@@ -1,0 +1,41 @@
+# Ciberseguridad Toolkit
+
+> Repositorio abierto de playbooks, herramientas y esquemas para analisis de seguridad.
+> Todo el contenido es ejecutable offline, libre de PII y reutilizable por personas y modelos de lenguaje.
+
+## Playbooks
+
+- [Respuesta a incidentes](playbooks/incident-response.md): Contencion, erradicacion y recuperacion ante un incidente confirmado o probable.
+- [Analisis de malware](playbooks/malware.md): Procedimiento estatico y dinamico controlado para caracterizar una muestra sospechosa.
+- [OSINT](playbooks/osint.md): Reconocimiento pasivo de dominios, IPs y personas usando solo fuentes abiertas. (red: optional)
+- [Triage de phishing](playbooks/phishing.md): Clasifica un correo sospechoso, verifica autenticacion y extrae indicadores accionables.
+- [Auditoria de PII](playbooks/pii-audit.md): Detecta datos personales, credenciales y configuracion hardcodeada en archivos locales.
+
+## Documentacion
+
+- [Convencion de IDs y severidades](docs/convenciones/ids-y-severidades.md): Identificadores estables e inmutables y escala unica de criticidad para todo el repositorio.
+- [Front-matter obligatorio](docs/convenciones/front-matter.md): Metadatos que todo documento del repositorio debe declarar al inicio del archivo.
+
+## Plantillas
+
+- [Plantilla de reporte de analisis](docs/plantillas/reporte.md): Estructura base para documentar un analisis de seguridad sin datos personales.
+- [Plantilla de ficha de caso](docs/plantillas/caso.md): Registro minimo de un caso alineado al esquema case.schema.json.
+
+## Herramientas
+
+- [hash_tools](tools/forense/hash_tools.py): Calcula MD5, SHA-1 y SHA-256, detecta el tipo real por magic bytes y mide la entropia de Shannon.
+- [email_header_parser](tools/forense/email_header_parser.py): Parsea cabeceras de correo, extrae cadena Received y evalua SPF, DKIM y DMARC.
+- [session_manager](tools/gestion/session_manager.py): Crea, actualiza, lista y cierra sesiones de analisis con hallazgos y conclusion.
+- [security_tools](tools/gestion/security_tools.ps1): Funciones PowerShell de reconocimiento local en Windows (hashes, procesos, red, persistencia).
+- [build_manifest](tools/gestion/build_manifest.py): Regenera manifest.json y llms.txt a partir del front-matter de documentos y herramientas.
+- [validate_repo](tools/gestion/validate_repo.py): Valida metadatos, IDs unicos, rutas del manifiesto y ausencia de PII publicada.
+- [ioc_extractor](tools/ioc/ioc_extractor.py): Extrae IPs, dominios, URLs, hashes y correos, y opcionalmente detecta PII enmascarada.
+- [threat_intel_api](tools/ioc/threat_intel_api.py): Consulta reputacion de URLs, IPs y hashes en VirusTotal y AbuseIPDB con claves propias. (red: required)
+- [url_analyzer](tools/recon/url_analyzer.py): Extrae y puntua URLs por TLD sospechoso, IP literal, acortadores, subdominios y typosquatting.
+- [network_utils](tools/recon/network_utils.py): Resuelve DNS y reverse DNS y comprueba puertos TCP comunes. Requiere autorizacion de red. (red: optional)
+
+## Optional
+
+- [Como consumir el repo desde una IA](AI.md): orden de lectura y reglas de operacion.
+- [Indice maestro](INDEX.md): menu completo para personas.
+- [Manifiesto estructurado](manifest.json): indice para maquinas.

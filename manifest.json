@@ -1,0 +1,344 @@
+{
+  "$schema": "./schemas/manifest.schema.json",
+  "name": "Ciberseguridad Toolkit",
+  "slug": "ciberseguridad-toolkit",
+  "version": "0.1.0",
+  "description": "Repositorio abierto de playbooks, herramientas y esquemas para analisis de seguridad. Offline por defecto, libre de PII.",
+  "generated_at": "2026-11-09",
+  "license": {
+    "code": "MIT",
+    "docs": "CC-BY-4.0"
+  },
+  "entrypoints": {
+    "human": "README.md",
+    "index": "INDEX.md",
+    "llm": "llms.txt",
+    "agents": "AGENTS.md"
+  },
+  "conventions": {
+    "network_values": [
+      "none",
+      "optional",
+      "required"
+    ],
+    "severity_values": [
+      "critical",
+      "high",
+      "medium",
+      "low",
+      "info"
+    ],
+    "status_values": [
+      "draft",
+      "review",
+      "stable",
+      "deprecated"
+    ]
+  },
+  "resources": [
+    {
+      "id": "DOC-CONV-001",
+      "type": "doc",
+      "title": "Convencion de IDs y severidades",
+      "path": "docs/convenciones/ids-y-severidades.md",
+      "summary": "Identificadores estables e inmutables y escala unica de criticidad para todo el repositorio.",
+      "tags": [
+        "conventions",
+        "severity",
+        "ids"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "DOC-CONV-002",
+      "type": "doc",
+      "title": "Front-matter obligatorio",
+      "path": "docs/convenciones/front-matter.md",
+      "summary": "Metadatos que todo documento del repositorio debe declarar al inicio del archivo.",
+      "tags": [
+        "conventions",
+        "metadata",
+        "yaml"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "PB-IR-001",
+      "type": "playbook",
+      "title": "Respuesta a incidentes",
+      "path": "playbooks/incident-response.md",
+      "summary": "Contencion, erradicacion y recuperacion ante un incidente confirmado o probable.",
+      "tags": [
+        "incident-response",
+        "containment",
+        "forensics",
+        "recovery"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "draft"
+    },
+    {
+      "id": "PB-MAL-001",
+      "type": "playbook",
+      "title": "Analisis de malware",
+      "path": "playbooks/malware.md",
+      "summary": "Procedimiento estatico y dinamico controlado para caracterizar una muestra sospechosa.",
+      "tags": [
+        "malware",
+        "static",
+        "dynamic",
+        "ioc",
+        "sandbox"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "draft"
+    },
+    {
+      "id": "PB-OSINT-001",
+      "type": "playbook",
+      "title": "OSINT",
+      "path": "playbooks/osint.md",
+      "summary": "Reconocimiento pasivo de dominios, IPs y personas usando solo fuentes abiertas.",
+      "tags": [
+        "osint",
+        "recon",
+        "dns",
+        "whois",
+        "passive"
+      ],
+      "network": "optional",
+      "version": "1.0.0",
+      "status": "draft"
+    },
+    {
+      "id": "PB-PHISH-001",
+      "type": "playbook",
+      "title": "Triage de phishing",
+      "path": "playbooks/phishing.md",
+      "summary": "Clasifica un correo sospechoso, verifica autenticacion y extrae indicadores accionables.",
+      "tags": [
+        "phishing",
+        "email",
+        "triage",
+        "ioc",
+        "spf",
+        "dkim",
+        "dmarc"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "PB-PII-001",
+      "type": "playbook",
+      "title": "Auditoria de PII",
+      "path": "playbooks/pii-audit.md",
+      "summary": "Detecta datos personales, credenciales y configuracion hardcodeada en archivos locales.",
+      "tags": [
+        "pii",
+        "privacy",
+        "audit",
+        "compliance",
+        "secrets"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "draft"
+    },
+    {
+      "id": "TOOL-FOR-001",
+      "type": "tool",
+      "title": "hash_tools",
+      "path": "tools/forense/hash_tools.py",
+      "summary": "Calcula MD5, SHA-1 y SHA-256, detecta el tipo real por magic bytes y mide la entropia de Shannon.",
+      "tags": [
+        "hash",
+        "entropy",
+        "forensics",
+        "triage"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TOOL-FOR-002",
+      "type": "tool",
+      "title": "email_header_parser",
+      "path": "tools/forense/email_header_parser.py",
+      "summary": "Parsea cabeceras de correo, extrae cadena Received y evalua SPF, DKIM y DMARC.",
+      "tags": [
+        "email",
+        "headers",
+        "phishing",
+        "spf",
+        "dkim",
+        "dmarc"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TOOL-GES-001",
+      "type": "tool",
+      "title": "session_manager",
+      "path": "tools/gestion/session_manager.py",
+      "summary": "Crea, actualiza, lista y cierra sesiones de analisis con hallazgos y conclusion.",
+      "tags": [
+        "sessions",
+        "workflow",
+        "case-management"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TOOL-GES-002",
+      "type": "tool",
+      "title": "security_tools",
+      "path": "tools/gestion/security_tools.ps1",
+      "summary": "Funciones PowerShell de reconocimiento local en Windows (hashes, procesos, red, persistencia).",
+      "tags": [
+        "windows",
+        "powershell",
+        "forensics",
+        "triage"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TOOL-GES-003",
+      "type": "tool",
+      "title": "build_manifest",
+      "path": "tools/gestion/build_manifest.py",
+      "summary": "Regenera manifest.json y llms.txt a partir del front-matter de documentos y herramientas.",
+      "tags": [
+        "tooling",
+        "manifest",
+        "automation"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TOOL-GES-004",
+      "type": "tool",
+      "title": "validate_repo",
+      "path": "tools/gestion/validate_repo.py",
+      "summary": "Valida metadatos, IDs unicos, rutas del manifiesto y ausencia de PII publicada.",
+      "tags": [
+        "tooling",
+        "validation",
+        "quality"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TOOL-IOC-001",
+      "type": "tool",
+      "title": "ioc_extractor",
+      "path": "tools/ioc/ioc_extractor.py",
+      "summary": "Extrae IPs, dominios, URLs, hashes y correos, y opcionalmente detecta PII enmascarada.",
+      "tags": [
+        "ioc",
+        "extraction",
+        "pii",
+        "defang",
+        "triage"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TOOL-IOC-002",
+      "type": "tool",
+      "title": "threat_intel_api",
+      "path": "tools/ioc/threat_intel_api.py",
+      "summary": "Consulta reputacion de URLs, IPs y hashes en VirusTotal y AbuseIPDB con claves propias.",
+      "tags": [
+        "threat-intel",
+        "virustotal",
+        "abuseipdb",
+        "ioc"
+      ],
+      "network": "required",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TOOL-REC-001",
+      "type": "tool",
+      "title": "url_analyzer",
+      "path": "tools/recon/url_analyzer.py",
+      "summary": "Extrae y puntua URLs por TLD sospechoso, IP literal, acortadores, subdominios y typosquatting.",
+      "tags": [
+        "url",
+        "phishing",
+        "recon",
+        "typosquatting"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TOOL-REC-002",
+      "type": "tool",
+      "title": "network_utils",
+      "path": "tools/recon/network_utils.py",
+      "summary": "Resuelve DNS y reverse DNS y comprueba puertos TCP comunes. Requiere autorizacion de red.",
+      "tags": [
+        "dns",
+        "network",
+        "ports",
+        "recon"
+      ],
+      "network": "optional",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TPL-001",
+      "type": "template",
+      "title": "Plantilla de reporte de analisis",
+      "path": "docs/plantillas/reporte.md",
+      "summary": "Estructura base para documentar un analisis de seguridad sin datos personales.",
+      "tags": [
+        "template",
+        "report"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    },
+    {
+      "id": "TPL-002",
+      "type": "template",
+      "title": "Plantilla de ficha de caso",
+      "path": "docs/plantillas/caso.md",
+      "summary": "Registro minimo de un caso alineado al esquema case.schema.json.",
+      "tags": [
+        "template",
+        "case"
+      ],
+      "network": "none",
+      "version": "1.0.0",
+      "status": "stable"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ciberseguridad-toolkit/schemas/case.schema.json",
+  "title": "Ciberseguridad Toolkit - Caso",
+  "description": "Registro de un caso de analisis. Prohibido incluir datos personales reales.",
+  "type": "object",
+  "required": ["id", "title", "playbook", "status", "severity", "created"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^CASE-\\d{4}-\\d{3}$",
+      "description": "CASE-<anio>-<secuencia>."
+    },
+    "title": { "type": "string", "minLength": 5, "maxLength": 120 },
+    "playbook": { "type": "string", "pattern": "^PB-[A-Z]+-\\d{3}$" },
+    "playbook_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "status": {
+      "type": "string",
+      "enum": ["opened", "in_progress", "pending_user", "resolved", "escalated", "false_alarm"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low", "info"]
+    },
+    "created": { "type": "string", "format": "date" },
+    "closed": { "type": "string", "format": "date" },
+    "verdict": { "type": "string" },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "iocs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ioc" }
+    },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/finding" }
+    },
+    "conclusion": { "type": "string", "maxLength": 2000 },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "artifacts": {
+      "type": "array",
+      "description": "Referencias a evidencia. Nunca rutas locales absolutas.",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "ioc": {
+      "type": "object",
+      "required": ["type", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["ipv4", "ipv6", "domain", "url", "email", "md5", "sha1", "sha256", "filename", "cve", "other"]
+        },
+        "value": { "type": "string", "minLength": 1 },
+        "context": { "type": "string" },
+        "defanged": { "type": "boolean", "default": true }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["title", "severity", "detail"],
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string", "minLength": 3 },
+        "severity": {
+          "type": "string",
+          "enum": ["critical", "high", "medium", "low", "info"]
+        },
+        "detail": { "type": "string", "minLength": 10 },
+        "location": { "type": "string" },
+        "recommendation": { "type": "string" }
+      }
+    }
+  }
+}

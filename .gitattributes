@@ -1,0 +1,36 @@
+# Normalizacion de finales de linea y binarios
+* text=auto eol=lf
+
+# Scripts Windows conservan CRLF
+*.ps1   text eol=crlf
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+
+# Texto en LF
+*.md     text eol=lf
+*.json   text eol=lf
+*.jsonc  text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.py     text eol=lf
+*.sh     text eol=lf
+*.txt    text eol=lf
+
+# Binarios
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.svg  text
+*.zip  binary
+*.xml  binary
+*.docx binary
+*.xlsx binary
+*.pptx binary
+
+# Estadisticas de lenguaje en GitHub
+playbooks/*.md linguist-documentation=true
+docs/*.md      linguist-documentation=true
+tools/**       linguist-detectable=true
+schemas/**     linguist-detectable=true

@@ -1,0 +1,23 @@
+# Licencia de la documentacion
+
+Los documentos de este repositorio (contenido de `docs/`, `playbooks/`, `examples/`,
+`INDEX.md`, `README.md`, `AI.md` y plantillas) se publican bajo:
+
+**Creative Commons Atribucion 4.0 Internacional (CC BY 4.0)**
+
+Puedes copiar, redistribuir, remezclar, transformar y crear a partir del material
+para cualquier proposito, incluso comercial, siempre que otorgues el credito
+adecuado, proporciones un enlace a la licencia e indiques si se hicieron cambios.
+
+- Resumen legible: https://creativecommons.org/licenses/by/4.0/deed.es
+- Texto legal completo: https://creativecommons.org/licenses/by/4.0/legalcode.es
+
+## Atribucion sugerida
+
+> Ciberseguridad Toolkit, Cristyan Vergara P, CC BY 4.0,
+> https://github.com/cvergara-areandina/Ciberseguridad-Toolkit
+
+## Alcance
+
+- **Codigo** (`tools/`, scripts): licencia MIT, ver [`LICENSE`](LICENSE).
+- **Documentacion** (playbooks, guias, plantillas): CC BY 4.0, este archivo.

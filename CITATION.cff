@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Si usas este repositorio, cita el proyecto."
+title: "Ciberseguridad Toolkit"
+abstract: "Repositorio abierto de playbooks, herramientas y esquemas para analisis de seguridad."
+version: "0.1.0"
+date-released: "2026-11-09"
+license: "MIT"
+license-url: "https://github.com/cvergara-areandina/Ciberseguridad-Toolkit/blob/main/LICENSE"
+repository-code: "https://github.com/cvergara-areandina/Ciberseguridad-Toolkit"
+keywords:
+  - cybersecurity
+  - incident-response
+  - phishing
+  - osint
+  - threat-intelligence
+  - playbooks

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ciberseguridad-toolkit/schemas/manifest.schema.json",
+  "title": "Ciberseguridad Toolkit - Manifiesto",
+  "description": "Indice estructurado de recursos del repositorio.",
+  "type": "object",
+  "required": ["name", "slug", "version", "resources"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": { "type": "string", "minLength": 1 },
+    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date" },
+    "license": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "docs": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "entrypoints": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "conventions": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "resources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/resource" }
+    }
+  },
+  "$defs": {
+    "resource": {
+      "type": "object",
+      "required": ["id", "type", "title", "path", "summary", "network"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(PB|DOC|TOOL|SCH|TPL|EX)-([A-Z]+-)?\\d{3}$"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["playbook", "doc", "tool", "schema", "template", "example"]
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "pattern": "^[^/].*\\.(md|py|ps1|json)$" },
+        "summary": { "type": "string", "minLength": 10, "maxLength": 200 },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+        },
+        "network": { "type": "string", "enum": ["none", "optional", "required"] },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "status": { "type": "string", "enum": ["draft", "review", "stable", "deprecated"] }
+      }
+    }
+  }
+}

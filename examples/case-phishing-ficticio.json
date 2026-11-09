@@ -1,0 +1,45 @@
+{
+  "id": "CASE-2026-001",
+  "title": "Correo que suplanta a un proveedor de facturacion",
+  "playbook": "PB-PHISH-001",
+  "playbook_version": "1.0.0",
+  "status": "resolved",
+  "severity": "high",
+  "created": "2026-11-09",
+  "closed": "2026-11-09",
+  "verdict": "phishing",
+  "confidence": "high",
+  "iocs": [
+    {
+      "type": "domain",
+      "value": "proveedor-facturacion[.]example",
+      "context": "Dominio del enlace de pago",
+      "defanged": true
+    },
+    {
+      "type": "email",
+      "value": "cobros@proveedor-facturacion[.]example",
+      "context": "Remitente suplantado",
+      "defanged": true
+    }
+  ],
+  "findings": [
+    {
+      "title": "Fallo de DMARC",
+      "severity": "high",
+      "detail": "El dominio remitente publica DMARC en p=none y el mensaje no alinea SPF ni DKIM.",
+      "location": "Authentication-Results",
+      "recommendation": "Bloquear el dominio en la puerta de correo."
+    },
+    {
+      "title": "Enlace a dominio no relacionado",
+      "severity": "high",
+      "detail": "El boton de pago apunta a un dominio registrado hace 3 dias, distinto al oficial.",
+      "location": "Cuerpo HTML",
+      "recommendation": "Anadir a la lista de bloqueo y notificar a usuarios."
+    }
+  ],
+  "conclusion": "Phishing de suplantacion con enlace de pago fraudulento. Sin adjuntos. Se recomienda bloqueo de dominio y comunicacion interna.",
+  "limitations": ["No se dispone de la IP de origen en la exportacion del mensaje."],
+  "artifacts": ["correo-ficticio.eml"]
+}
