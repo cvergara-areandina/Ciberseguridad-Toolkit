@@ -13,7 +13,7 @@ license: CC-BY-4.0
 
 # Herramientas
 
-Requisitos: **Python 3.9+**. Sin dependencias externas (`pip install` no es necesario).
+Requisitos: **Python 3.10+**. Sin dependencias externas (`pip install` no es necesario).
 
 ## Catalogo
 

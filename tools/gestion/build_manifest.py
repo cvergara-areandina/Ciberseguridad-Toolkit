@@ -150,7 +150,11 @@ def main() -> int:
     llms = build_llms(resources)
 
     if args.check:
-        ok = MANIFEST.read_text(encoding="utf-8") == payload and LLMS.read_text(encoding="utf-8") == llms
+        current = json.loads(MANIFEST.read_text(encoding="utf-8"))
+        expected = json.loads(payload)
+        current.pop("generated_at", None)
+        expected.pop("generated_at", None)
+        ok = current == expected and LLMS.read_text(encoding="utf-8") == llms
         print("OK: manifest y llms.txt estan al dia" if ok else "DESACTUALIZADO: ejecuta build_manifest.py")
         return 0 if ok else 1
 

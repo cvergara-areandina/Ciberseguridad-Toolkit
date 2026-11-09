@@ -40,7 +40,7 @@ cat INDEX.md
 python tools/<dominio>/<herramienta>.py --help
 ```
 
-No se requiere `pip install`. Todas las herramientas usan la biblioteca estándar de Python 3.9+.
+No se requiere `pip install`. Todas las herramientas usan la biblioteca estándar de Python 3.10+.
 
 ## Estructura
 
